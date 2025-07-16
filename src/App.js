@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { jsPDF } from "jspdf";
+import React, { useState, useEffect, useCallback } from 'react';
 
 // =================================================================================
 // === DATA & CONFIGURATION ========================================================
@@ -3599,7 +3598,7 @@ import { jsPDF } from "jspdf";
         { answerText: 'Static code analysis', isCorrect: false },
         { answerText: 'Sandboxing', isCorrect: false },
       ],
-    explanation: 'The log entry in the image suggests that the system is potentially under attack, as the User-Agent header contains what looks like a shell command: ${/bin/sh/id}. This type of activity may indicate an attempted command injection attack, where an attacker is trying to execute shell commands via a vulnerable web application.'
+    explanation: 'The log entry in the image suggests that the system is potentially under attack, as the User-Agent header contains what looks like a shell command. This type of activity may indicate an attempted command injection attack, where an attacker is trying to execute shell commands via a vulnerable web application.'
   },
     {
       questionText: 'An administrator is installing an SSL certificate on a new system. During testing, errors indicate that the certificate is not trusted. The administrator has verified with the issuing CA and has validated the private key. Which of the following should the administrator check for next?',
