@@ -3598,7 +3598,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Static code analysis', isCorrect: false },
         { answerText: 'Sandboxing', isCorrect: false },
       ],
-    explanation: 'The log entry in the image suggests that the system is potentially under attack, as the User-Agent header contains what looks like a shell command. This type of activity may indicate an attempted command injection attack, where an attacker is trying to execute shell commands via a vulnerable web application.'
+    explanation: 'The log entry in the image suggests that the system is potentially under attack, as the User-Agent header contains what looks like a shell command: ${/bin/sh/id}. This type of activity may indicate an attempted command injection attack, where an attacker is trying to execute shell commands via a vulnerable web application.'
   },
     {
       questionText: 'An administrator is installing an SSL certificate on a new system. During testing, errors indicate that the certificate is not trusted. The administrator has verified with the issuing CA and has validated the private key. Which of the following should the administrator check for next?',
@@ -6194,7 +6194,7 @@ const LandingPage = ({ onStart, onShowHistory }) => (
     </div>
 );
 
-const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, onRestart, onShowHistory, onBackToHome, onRestartFromHistory, reviewFilter, setReviewFilter, searchTerm, setSearchTerm, isSearchVisible, setIsSearchVisible, filteredQuestions, explanationVisibility, toggleExplanation, questionPoolLength }) => {
+const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, onRestart, onShowHistory, onBackToHome, onRestartFromHistory, reviewFilter, setReviewFilter, searchTerm, setSearchTerm, isSearchVisible, setIsSearchVisible, filteredQuestions, explanationVisibility, toggleExplanation, questionPoolLength, timeLeft }) => {
     const { message, color } = getScoreMessage(score);
 
     const handleDownloadPdf = () => {
@@ -6640,7 +6640,7 @@ const App = () => {
         setReviewingHistoryEntry(null);
     };
     
-    const calculateFinalScore = () => {
+    const calculateFinalScore = useCallback(() => {
         let totalPoints = 0;
         userAnswers.forEach((selectedIndices, questionIndex) => {
           const question = currentQuizQuestions[questionIndex];
@@ -6685,7 +6685,7 @@ const App = () => {
             localStorage.setItem('quizScoreHistory', JSON.stringify(updatedHistory));
             return updatedHistory;
         });
-    };
+    }, [userAnswers, currentQuizQuestions, scoreHistory]);
       
     useEffect(() => {
         const sourceQuestions = reviewingHistoryEntry ? reviewingHistoryEntry.questions : currentQuizQuestions;
@@ -6729,7 +6729,7 @@ const App = () => {
         }
         const timerId = setInterval(() => setTimeLeft(t => t - 1), 1000);
         return () => clearInterval(timerId);
-    }, [timeLeft, isQuizActive, showScore]);
+    }, [timeLeft, isQuizActive, showScore, calculateFinalScore]);
 
     const handleStartQuiz = () => {
         let pool = [...questionPool];
