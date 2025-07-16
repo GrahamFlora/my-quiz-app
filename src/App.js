@@ -6133,7 +6133,7 @@ import { jsPDF } from "jspdf";
         { answerText: 'Analysis', isCorrect: false },
       ],
      explanation: 'after reseatch i agree B is the answer'
-    }
+    },
   ];
 
 const QUESTIONS_PER_QUIZ = 90;
