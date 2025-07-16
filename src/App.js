@@ -176,7 +176,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Pass-the-hash', isCorrect: false },
         { answerText: 'Brute-force', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'A password spraying attack is a type of brute-force attack where an attacker tries a small number of common passwords against many different user accounts. The attacker uses a bot to repeatedly attempt these passwords until they find a successful login.'
   },
     {
       questionText: 'An analyst is evaluating the implementation of Zero Trust principles within the data plane. Which of the following would be most relevant for the analyst to evaluate?',
@@ -720,7 +720,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'An attacker is attempting to brute force jsmith’s account.', isCorrect: true },
         { answerText: 'Ransomware has been deployed in the domain.', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'The scenario perfectly matches a common security issue where attackers gain partial access through stolen credentials but are thwarted by MFA, which they try to bypass unsuccessfully.The repeated success in password authentication suggests that the attacker has access to jsmiths password, but the failure of MFA points to an attempt to guess or brute-force the MFA code.'
   },
     {
       questionText: 'A company is concerned about weather events causing damage to the server room and downtime. Which of the following should the company consider?',
@@ -800,7 +800,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Failed password audit', isCorrect: false },
         { answerText: 'Forgotten password by the user', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Event ID 4625 is logged for any logon failure. It generates on the computer where logon attempt was made.In this scenario we can see multiple login attempts every few seconds indicating that this is a potential brute-force attack.'
   },
     {
       questionText: 'A security engineer is implementing FDE for all laptops in an organization. Which of the following are the most important for the engineer to consider as part of the planning process? (Choose two.)',
@@ -822,7 +822,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Using a proxy for web connections from the remote desktop server', isCorrect: false },
         { answerText: 'Connecting the remote server to the domain and increasing the password length', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Setting up a VPN and placing the jump server inside the firewall is the most secure approach because it reduces the attack surface and ensures that only authorized users can access the remote desktop service. This solution addresses the primary security concern of protecting sensitive production systems by ensuring that only verified users can gain access, thus minimizing the attack surface and potential vulnerabilities.'
   },
     {
       questionText: 'An enterprise has been experiencing attacks focused on exploiting vulnerabilities in older browser versions with well-known exploits. Which of the following security solutions should be configured to best provide the ability to monitor and block these known signature-based attacks?',
@@ -872,7 +872,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Implementing insider threat detection measures', isCorrect: false },
         { answerText: 'Updating processes for sending wire transfers', isCorrect: true },
       ],
-    explanation: ''
+    explanation: 'Updating the processes for sending wire transfers would most likely prevent this type of activity in the future. This could include implementing additional verification steps, such as requiring multiple levels of approval, verifying new payment instructions through a separate communication channel, or implementing a callback procedure to confirm the authenticity of the instructions.'
   },
     {
       questionText: 'A systems administrator is creating a script that would save time and prevent human error when performing account creation for a large number of end users. Which of the following would be a good use case for this task?',
@@ -892,7 +892,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Subject', isCorrect: true },
         { answerText: 'Owner', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'In the context of data roles, the customer whose sensitive data is being collected, modified, and stored is referred to as the "Subject." The data subject is the individual to whom the data pertains.'
   },
     {
       questionText: 'Which of the following describes the maximum allowance of accepted risk?',
@@ -925,7 +925,7 @@ import React, { useState, useEffect, useCallback } from 'react';
     explanation: 'B. Non-segmented network Opening ports on a firewall for a new system introduces the risk that the new system might be deployed on a non-segmented network. This means that the new system and its traffic could potentially be exposed to other parts of the network, increasing the risk of lateral movement by an attacker if the system is compromised. Network segmentation helps in containing potential breaches and limiting access to sensitive areas of the network. Therefore, the correct answer is: B. Non-segmented network'
   },
     {
-      questionText: 'A systems administrator is working on a solution with the following requirements:• Provide a secure zone.• Enforce a company-wide access control policy.• Reduce the scope of threats.Which of the following is the systems administrator setting up?',
+      questionText: 'A systems administrator is working on a solution with the following requirements:\n\n• Provide a secure zone.\n• Enforce a company-wide access control policy.\n• Reduce the scope of threats.\n\nWhich of the following is the systems administrator setting up?',
       answerOptions: [
         { answerText: 'Zero Trust', isCorrect: true },
         { answerText: 'AAA', isCorrect: false },
@@ -962,7 +962,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Application', isCorrect: false },
         { answerText: 'Operating system', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Firmware is the correct answer because a BIOS update addresses vulnerabilities at the firmware level. The BIOS is an essential component of the system\'s firmware, and updates to it are intended to fix security vulnerabilities, improve compatibility, and enhance overall system stability.'
   },
     {
       questionText: 'Which of the following is used to quantitatively measure the criticality of a vulnerability?',
@@ -1002,7 +1002,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'It is considered noise.', isCorrect: false },
         { answerText: 'Compensating controls exist.', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'False positive (A) would mean Telnet was incorrectly flagged as insecure—but Telnet is still a risk by default.\nCompensating controls (D) is correct because encryption helps mitigate the risk, but the risk still exists.'
   },
     {
       questionText: 'An organization disabled unneeded services and placed a firewall in front of a business-critical legacy system. Which of the following best describes the actions taken by the organization?',
@@ -1093,7 +1093,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Quality assurance testing', isCorrect: false },
         { answerText: 'Peer review and approval', isCorrect: true },
       ],
-    explanation: ''
+    explanation: 'The key word here is prevent. Peer reviews help catch malicious code before it is integrated into the production environment by having multiple sets of eyes on the changes, reducing the chance of any one developer slipping harmful code through the process.'
   },
     {
       questionText: 'Which of the following can best protect against an employee inadvertently installing malware on a company system?',
@@ -1155,7 +1155,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Watering-hole', isCorrect: true },
         { answerText: 'Smishing', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Watering-hole is the correct answer because it describes the method used by the attacker to compromise a legitimate website frequented by the target group (in this case, the industry blog) and spread malware to visitors. This strategic targeting and delivery mechanism is characteristic of a watering-hole attack.'
   },
     {
       questionText: 'An organization is struggling with scaling issues on its VPN concentrator and internet circuit due to remote work. The organization is looking for a software solution that will allow it to reduce traffic on the VPN and internet circuit, while still providing encrypted tunnel access to the data center and monitoring of remote employee internet traffic. Which of the following will help achieve these objectives?',
@@ -1217,7 +1217,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Preventive', isCorrect: false },
         { answerText: 'Corrective', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'The administrator used detective controls by reviewing the log files after the ransomware attack. Detective controls are designed to detect and identify potential security incidents or policy violations that may have occurred within an organization\'s systems or network. In this case, the log files were analyzed to identify signs of the ransomware attack and understand how the incident occurred.'
   },
     {
       questionText: 'Which of the following exercises should an organization use to improve its incident response process?',
@@ -1267,7 +1267,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'MOU', isCorrect: false },
         { answerText: 'SLA', isCorrect: true },
       ],
-    explanation: ''
+    explanation: 'In this scenario, the client demands 99.99% uptime for hosted security services. The SLA is the appropriate document to specify this uptime requirement and any associated metrics.\n\nMOA - memorandum of Agreement\nMOU - Memorandum of Understanding\nSOW - Statement / Scope of WorkSLA - Service Level Agreement'
   },
     {
       questionText: 'A company is discarding a classified storage array and hires an outside vendor to complete the disposal. Which of the following should the company request from the vendor?',
@@ -1297,7 +1297,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Check endpoint logs.', isCorrect: false },
         { answerText: 'Query the file\'s metadata.', isCorrect: true },
       ],
-    explanation: ''
+    explanation: 'Red = offensive\n Blue = defensive\n Yellow = builders\n Purple = mix of offensive and defensive. Also the color you get when you mix red and blue'
   },
     {
       questionText: 'Which of the following teams combines both offensive and defensive testing techniques to protect an organization\'s critical systems?',
@@ -1449,7 +1449,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Retain any communications between security members during the breach response.', isCorrect: false },
         { answerText: 'Retain all emails from the company to affected customers for an indefinite period of time.', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Retain any communications related to the security breach until further notice is the correct answer. This approach ensures that all relevant evidence is preserved in compliance with the legal hold, covering the full scope of communications and documents needed for the lawsuit. It aligns with the purpose of a legal hold, which is to safeguard all potential evidence until the legal proceedings are complete.'
   },
     {
       questionText: 'Which of the following describes the process of concealing code or text inside a graphical image?',
@@ -1499,7 +1499,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Assigning individual user IDs', isCorrect: false },
         { answerText: 'Reviewing logs more frequently', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Keyword "unexpectedly" and "logged in". if expected it would be with privilege. But not known Somebody could have cracked an easy password.'
   },
     {
       questionText: 'Which of the following is the best way to secure an on-site data center against intrusion from an insider?',
@@ -1519,7 +1519,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Time of day', isCorrect: false },
         { answerText: 'Least privilege', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Role-based is the correct answer because the issue arises from the engineer's account not being updated to include the new role associated with the new team's shared folders. Role-Based Access Control is the framework in place that determines access based on roles assigned to users, making it the most relevant explanation for the engineer\'s access issue.'
   },
     {
       questionText: 'Which of the following factors are the most important to address when formulating a training curriculum plan for a security awareness program? (Choose two.)',
@@ -1644,7 +1644,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Transport layer security', isCorrect: false },
         { answerText: 'Virtual private network', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Port security is a feature available on network switches that helps secure access to the physical network by restricting which devices can connect to each network port based on their MAC address.'
   },
     {
       questionText: "A security administrator is reissuing a former employee's laptop. Which of the following is the best combination of data handling activities for the administrator to perform? (Choose two.)",
@@ -1706,7 +1706,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Organizational impact', isCorrect: false },
         { answerText: 'Risk tolerance', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Patch availability most impacts an administrator\'s ability to address Common Vulnerabilities and Exposures (CVEs) discovered on a server. If patches are not available to fix the vulnerabilities, the administrator cannot remediate the issues, regardless of other factors.'
   },
     {
       questionText: 'Which of the following describes effective change management procedures?',
@@ -2006,7 +2006,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Data exfiltration', isCorrect: false },
         { answerText: 'Service disruption', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Shadow IT is when an employee uses information technology (IT) systems without the approval of an organization\'s IT department.'
   },
     {
       questionText: 'Which of the following would best explain why a security analyst is running daily vulnerability scans on all corporate endpoints?',
@@ -2343,7 +2343,7 @@ import React, { useState, useEffect, useCallback } from 'react';
     explanation: 'The correct answer is: B. Blue team Explanation: The blue team is responsible for defending the organization\'s systems, monitoring for vulnerabilities, and ensuring that systems are secure against potential threats. They: Conduct vulnerability assessments to identify exploitable weaknesses. Evaluate the impact of identified vulnerabilities on the organization\'s systems. Work to mitigate risks and patch vulnerabilities.'
   },
     {
-      questionText: 'A company is reviewing options to enforce user logins after several account takeovers. The following conditions must be met as part of the solution:•  Allow employees to work remotely or from assigned offices around the world.•  Provide a seamless login experience.• Limit the amount of equipment required.Which of the following best meets these conditions?',
+      questionText: 'A company is reviewing options to enforce user logins after several account takeovers. The following conditions must be met as part of the solution:\n\n• Allow employees to work remotely or from assigned offices around the world.\n• Provide a seamless login experience.\n• Limit the amount of equipment required.\n\n Which of the following best meets these conditions?',
       answerOptions: [
         { answerText: 'Trusted devices', isCorrect: true },
         { answerText: 'Geotagging', isCorrect: false },
@@ -2392,7 +2392,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Buffer overflow attack', isCorrect: false },
         { answerText: 'On-path attack', isCorrect: true },
       ],
-    explanation: ''
+    explanation: 'An on-path attack, also known as a man-in-the-middle (MITM) attack, occurs when an attacker intercepts the communication between two parties (in this case, the user and the airline\'s website). Since the user was on a public Wi-Fi network and ignored security warnings, it\'s possible that the attacker was able to intercept the credit card information during the transaction, leading to unauthorized charges.'
   },
     {
       questionText: 'A network engineer deployed a redundant switch stack to increase system availability. However, the budget can only cover the cost of one ISP connection. Which of the following best describes the potential risk factor?',
@@ -2480,7 +2480,7 @@ import React, { useState, useEffect, useCallback } from 'react';
     explanation: ''
   },
     {
-      questionText: 'A utility company is designing a new platform that will host all the virtual machines used by business applications. The requirements include:•  A starting baseline of 50% memory utilization•  Storage scalability•  Single circuit failure resilienceWhich of the following best meets all of these requirements?',
+      questionText: 'A utility company is designing a new platform that will host all the virtual machines used by business applications. The requirements include:\n\n•  A starting baseline of 50% memory utilization\n•  Storage scalability\n•  Single circuit failure resilience\n\n Which of the following best meets all of these requirements?',
       answerOptions: [
         { answerText: 'Connecting dual PDUs to redundant power supplies', isCorrect: false },
         { answerText: 'Transitioning the platform to an IaaS provider', isCorrect: true },
@@ -2937,14 +2937,14 @@ import React, { useState, useEffect, useCallback } from 'react';
     explanation: 'D. CVSS (Common Vulnerability Scoring System) Rationale: Provides standardized method for assessing vulnerability severity CVE: Identifies vulnerabilities, doesn\'t score severity OSINT: Open-source intelligence gathering SOAR: Security orchestration and automated response'
   },
     {
-      questionText: "An organization experienced a security breach that allowed an attacker to send fraudulent wire transfers from a hardened PC exclusively to the attacker's bank through remote connections. A security analyst is creating a timeline of events and has found a different PC on the network containing malware. Upon reviewing the command history, the analyst finds the following:PS>.\\mimikatz.exe \"sekurlsa::pth /user:localadmin /domain:corp-domain.com /ntlm:B4B9B02E1F29A3CF193EAB28C8D617D3F327Which of the following best describes how the attacker gained access to the hardened PC?",
+      questionText: "An organization experienced a security breach that allowed an attacker to send fraudulent wire transfers from a hardened PC exclusively to the attacker's bank through remote connections. A security analyst is creating a timeline of events and has found a different PC on the network containing malware. Upon reviewing the command history, the analyst finds the following:\nPS>.\\mimikatz.exe \"sekurlsa::pth /user:localadmin /domain:corp-domain.com /ntlm:B4B9B02E1F29A3CF193EAB28C8D617D3F327Which of the following best describes how the attacker gained access to the hardened PC?",
       answerOptions: [
         { answerText: 'The attacker created fileless malware that was hosted by the banking platform.', isCorrect: false },
         { answerText: 'The attacker performed a pass-the-hash attack using a shared support account.', isCorrect: true },
         { answerText: 'The attacker utilized living-off-the-land binaries to evade endpoint detection and response software.', isCorrect: false },
         { answerText: 'The attacker socially engineered the accountant into performing bad transfers.', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'The command history indicates that the attacker used Mimikatz to perform a pass-the-hash (PTH) attack, which involves using a hashed password (NTLM hash) to authenticate without needing to know the plaintext password. This suggests that the attacker exploited the credentials of a local admin account to access the hardened PC.'
   },
     {
       questionText: 'Which of the following is the best resource to consult for information on the most common application exploitation methods?',
@@ -2978,7 +2978,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Enforcement of content filtering policies', isCorrect: false },
         { answerText: 'A review of user account permissions', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'B. Conditional access policies: Implementing conditional access policies can restrict access based on certain conditions, such as geographical location, device compliance, or risk level. This would help prevent unauthorized logins from outside the organization’s network.\nD. Implementation of additional authentication factors: Adding multi-factor authentication (MFA) provides an extra layer of security, making it much harder for unauthorized individuals to gain access even if they have the correct credentials.'
   },
     {
       questionText: "A security team is addressing a risk associated with the attack surface of the organization's web application over port 443. Currently, no advanced network security capabilities are in place. Which of the following would be best to set up? (Choose two.)",
@@ -3023,7 +3023,7 @@ import React, { useState, useEffect, useCallback } from 'react';
     explanation: 'Sanitization is the process of removing sensitive data from a storage device in a manner that ensures the data cannot be recovered while allowing device to be reused. This involves methods like overwriting the data with zeros or other patterns multiple times.'
   },
     {
-      questionText: "An organization wants to improve the company's security authentication method for remote employees. Given the following requirements:• Must work across SaaS and internal network applications•  Must be device manufacturer agnostic• Must have offline capabilitiesWhich of the following would be the most appropriate authentication method?",
+      questionText: "An organization wants to improve the company's security authentication method for remote employees. Given the following requirements:\n\n• Must work across SaaS and internal network applications\n•  Must be device manufacturer agnostic\n• Must have offline capabilities\n\n Which of the following would be the most appropriate authentication method?",
       answerOptions: [
         { answerText: 'Username and password', isCorrect: false },
         { answerText: 'Biometrics', isCorrect: false },
@@ -3791,7 +3791,7 @@ import React, { useState, useEffect, useCallback } from 'react';
     explanation: 'The role of a custodian involves managing and maintaining data on behalf of the data owner. The custodian is responsible for implementing the policies and procedures related to data retention, ensuring that data is stored, archived, or disposed of according to organizational and regulatory standards.'
   },
     {
-      questionText: 'A company plans to secure its systems by:• Preventing users from sending sensitive data over corporate email•  Restricting access to potentially harmful websitesWhich of the following features should the company set up? (Choose two.)',
+      questionText: 'A company plans to secure its systems by:\n\n• Preventing users from sending sensitive data over corporate email\n•  Restricting access to potentially harmful websites\n\n Which of the following features should the company set up? (Choose two.)',
       answerOptions: [
         { answerText: 'DLP software', isCorrect: true },
         { answerText: 'DNS filtering', isCorrect: true },
@@ -5042,7 +5042,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'On-path', isCorrect: false },
         { answerText: 'Watering-hole', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Typosquatting is a cybercrime that involves registering a domain with a common misspelling of a popular website or brand:'
   },
     {
       questionText: 'Which of the following allows a systems administrator to tune permissions for a file?',
@@ -5773,14 +5773,15 @@ import React, { useState, useEffect, useCallback } from 'react';
     explanation: ''
   },
     {
-      questionText: "A company is changing its mobile device policy. The company has the following requirements:• Company-owned devices•  Ability to harden the devices•  Reduced security risk•  Compatibility with company resourcesWhich of the following would best meet these requirements?",
+      questionText: "A company is changing its mobile device policy. The company has the following requirements:\n\n• Company-owned devices\n•  Ability to harden the devices\n•  Reduced security risk\n•  Compatibility with company resources\n\nWhich of the following would best meet these requirements?",
       answerOptions: [
         { answerText: 'BYOD', isCorrect: false },
         { answerText: 'CYOD', isCorrect: false },
         { answerText: 'COPE', isCorrect: false },
         { answerText: 'COBO', isCorrect: true },
       ],
-    explanation: ''
+    explanation: 'COBO (Company-Owned, Business-Only) means the company fully owns and controls the devices, ensuring they can be hardened, secured, and optimized for business use. This reduces security risks and ensures full compatibility with company resources.\nCOPE (Company-Owned, Personally Enabled) allows some personal use, which might introduce security risks, though it still offers good control.\nCYOD (Choose Your Own Device) lets employees select from a list of company-approved devices but may limit security enforcement.\nBYOD (Bring Your Own Device) allows employees to use personal devices, reducing company control and increasing security risks.\n Best Choice:COBO ensures maximum security and control, making it the best fit for the company's requirements.
+'
   },
     {
       questionText: 'A company is concerned about employees unintentionally introducing malware into the network. The company identified fifty employees who clicked on a link embedded in an email sent by the internal IT department. Which of the following should the company implement to best improve its security posture?',
@@ -6011,7 +6012,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Philosophical beliefs', isCorrect: true },
         { answerText: 'Revenge', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Hacktivism is typically driven by strong political or social beliefs, where individuals use their hacking skills to promote a cause or protest against issues they feel are unjust.'
   },
     {
       questionText: 'During a recent log review, an analyst discovers evidence of successful injection attacks. Which of the following will best address this issue?',
@@ -6101,7 +6102,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Data subject', isCorrect: false },
         { answerText: 'Data custodian', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Under the General Data Protection Regulation (GDPR): A Data Controller is the entity that determines the purpose and means of processing personal data.\nIn this case, the retail company decides how and why customer data is collected, stored, and used.\n Therefore, the company is the Data Controller and is responsible for honoring requests like data deletion (right to be forgotten).'
   },
     {
       questionText: 'An administrator implements web-filtering products but still sees that users are visiting malicious links. Which of the following configuration items does the security administrator need to review?',
@@ -6121,7 +6122,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Blocked content', isCorrect: false },
         { answerText: 'Concurrent session usage', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'This indicator is triggered when a user logs in from two geographically distant locations within an impossibly short period of time. Looking at the VPN log ins, the user logged in from Chicago at 8:22am on 01/27 and logged in shortly after from Rome-Italy at 9:45am on the same date. That can\'t be possible!'
   },
     {
       questionText: 'Which of the following phases of the incident response process attempts to minimize disruption?',
