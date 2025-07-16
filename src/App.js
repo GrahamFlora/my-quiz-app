@@ -1519,7 +1519,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Time of day', isCorrect: false },
         { answerText: 'Least privilege', isCorrect: false },
       ],
-    explanation: 'Role-based is the correct answer because the issue arises from the engineer's account not being updated to include the new role associated with the new team's shared folders. Role-Based Access Control is the framework in place that determines access based on roles assigned to users, making it the most relevant explanation for the engineer\'s access issue.'
+    explanation: 'Role-based is the correct answer because the issue arises from the engineer\'s account not being updated to include the new role associated with the new team\'s shared folders. Role-Based Access Control is the framework in place that determines access based on roles assigned to users, making it the most relevant explanation for the engineer\'s access issue.'
   },
     {
       questionText: 'Which of the following factors are the most important to address when formulating a training curriculum plan for a security awareness program? (Choose two.)',
