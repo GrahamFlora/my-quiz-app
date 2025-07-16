@@ -5780,7 +5780,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'COPE', isCorrect: false },
         { answerText: 'COBO', isCorrect: true },
       ],
-    explanation: 'COBO (Company-Owned, Business-Only) means the company fully owns and controls the devices, ensuring they can be hardened, secured, and optimized for business use. This reduces security risks and ensures full compatibility with company resources.\nCOPE (Company-Owned, Personally Enabled) allows some personal use, which might introduce security risks, though it still offers good control.\nCYOD (Choose Your Own Device) lets employees select from a list of company-approved devices but may limit security enforcement.\nBYOD (Bring Your Own Device) allows employees to use personal devices, reducing company control and increasing security risks.\n Best Choice:COBO ensures maximum security and control, making it the best fit for the company's requirements.
+    explanation: 'COBO (Company-Owned, Business-Only) means the company fully owns and controls the devices, ensuring they can be hardened, secured, and optimized for business use. This reduces security risks and ensures full compatibility with company resources.\nCOPE (Company-Owned, Personally Enabled) allows some personal use, which might introduce security risks, though it still offers good control.\nCYOD (Choose Your Own Device) lets employees select from a list of company-approved devices but may limit security enforcement.\nBYOD (Bring Your Own Device) allows employees to use personal devices, reducing company control and increasing security risks.\n Best Choice:COBO ensures maximum security and control, making it the best fit for the company\'s requirements'.
 '
   },
     {
