@@ -1519,7 +1519,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Time of day', isCorrect: false },
         { answerText: 'Least privilege', isCorrect: false },
       ],
-    explanation: 'Role-based is the correct answer because the issue arises from the engineer\'s account not being updated to include the new role associated with the new team\'s shared folders. Role-Based Access Control is the framework in place that determines access based on roles assigned to users, making it the most relevant explanation for the engineer\'s access issue.'
+    explanation: 'Role-based is the correct answer because the issue arises from the engineer's account not being updated to include the new role associated with the new team's shared folders. Role-Based Access Control is the framework in place that determines access based on roles assigned to users, making it the most relevant explanation for the engineer\'s access issue.'
   },
     {
       questionText: 'Which of the following factors are the most important to address when formulating a training curriculum plan for a security awareness program? (Choose two.)',
@@ -3070,7 +3070,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'SCAP', isCorrect: false },
         { answerText: 'Illumination tool', isCorrect: true },
       ],
-    explanation: ''
+    explanation: 'The correct answer is D. Illumination tool. An illumination tool is designed to provide a comprehensive overview and analysis of a supply chain, identifying risks, vulnerabilities, and potential points of failure across the entire spectrum.'
   },
     {
       questionText: 'A systems administrator deployed a monitoring solution that does not require installation on the endpoints that the solution is monitoring. Which of the following is described in this scenario?',
@@ -5698,7 +5698,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Require that invoices be sent as attachments', isCorrect: false },
         { answerText: 'Be alert to unexpected requests from familiar email addresses', isCorrect: true },
       ],
-    explanation: ''
+    explanation: 'Compromised email accounts are a common attack vector. If a vendor\'s email account is compromised, attackers may use it to send legitimate-looking, but malicious, emails. Employees should be trained to recognize unexpected requests from familiar email addresses, as this could indicate that an email is fraudulent or part of a phishing attack.'
   },
     {
       questionText: 'A new corporate policy requires all staff to use multifactor authentication to access company resources. Which of the following can be utilized to set up this form of identity and access management? (Choose two.)',
@@ -5780,7 +5780,8 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'COPE', isCorrect: false },
         { answerText: 'COBO', isCorrect: true },
       ],
-    explanation: 'COBO (Company-Owned, Business-Only) means the company fully owns and controls the devices, ensuring they can be hardened, secured, and optimized for business use. This reduces security risks and ensures full compatibility with company resources.\nCOPE (Company-Owned, Personally Enabled) allows some personal use, which might introduce security risks, though it still offers good control.\nCYOD (Choose Your Own Device) lets employees select from a list of company-approved devices but may limit security enforcement.\nBYOD (Bring Your Own Device) allows employees to use personal devices, reducing company control and increasing security risks.\n Best Choice:COBO ensures maximum security and control, making it the best fit for the company\'s requirements.'
+    explanation: 'COBO (Company-Owned, Business-Only) means the company fully owns and controls the devices, ensuring they can be hardened, secured, and optimized for business use. This reduces security risks and ensures full compatibility with company resources.\nCOPE (Company-Owned, Personally Enabled) allows some personal use, which might introduce security risks, though it still offers good control.\nCYOD (Choose Your Own Device) lets employees select from a list of company-approved devices but may limit security enforcement.\nBYOD (Bring Your Own Device) allows employees to use personal devices, reducing company control and increasing security risks.\n Best Choice:COBO ensures maximum security and control, making it the best fit for the company's requirements.
+'
   },
     {
       questionText: 'A company is concerned about employees unintentionally introducing malware into the network. The company identified fifty employees who clicked on a link embedded in an email sent by the internal IT department. Which of the following should the company implement to best improve its security posture?',
@@ -6071,7 +6072,7 @@ import React, { useState, useEffect, useCallback } from 'react';
         { answerText: 'Brand impersonation', isCorrect: false },
         { answerText: 'Pretexting', isCorrect: false },
       ],
-    explanation: ''
+    explanation: 'Business Email Compromise (BEC) is a targeted attack where the attacker gains access to a legitimate business email account (like a CEO\'s) and uses it to deceive employees into transferring money, revealing sensitive information, or changing account details.'
   },
     {
       questionText: 'Which of the following should an organization use to ensure that it can review the controls and performance of a service provider or vendor?',
