@@ -6135,6 +6135,7 @@ import React, { useState, useEffect, useCallback } from 'react';
     },
   ];
 
+
 const QUESTIONS_PER_QUIZ = 90;
 const QUIZ_DURATION_SECONDS = 90 * 60;
 const PASSING_SCORE = 750;
@@ -6194,8 +6195,17 @@ const LandingPage = ({ onStart, onShowHistory }) => (
     </div>
 );
 
-const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, onRestart, onShowHistory, onBackToHome, onRestartFromHistory, reviewFilter, setReviewFilter, searchTerm, setSearchTerm, isSearchVisible, setIsSearchVisible, filteredQuestions, explanationVisibility, toggleExplanation, questionPoolLength, timeLeft }) => {
+const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, onRestart, onShowHistory, onBackToHome, onRestartFromHistory, reviewFilter, setReviewFilter, searchTerm, setSearchTerm, isSearchVisible, setIsSearchVisible, filteredQuestions, explanationVisibility, toggleExplanation, questionPoolLength, timeLeft, isReviewVisible, setIsReviewVisible }) => {
     const { message, color } = getScoreMessage(score);
+
+    const handleFilterClick = (filter) => {
+        if (isReviewVisible && reviewFilter === filter) {
+            setIsReviewVisible(false);
+        } else {
+            setReviewFilter(filter);
+            setIsReviewVisible(true);
+        }
+    };
 
     const handleDownloadPdf = () => {
         if (!window.jspdf) {
@@ -6338,8 +6348,8 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
           <div className="mt-8 text-left">
             <div className="flex flex-col sm:flex-row justify-between items-center mb-4 border-b-2 border-gray-200 pb-4 gap-4">
                 <div className="flex gap-2">
-                    <button onClick={() => setReviewFilter('all')} className={`px-4 py-2 rounded-lg font-semibold ${reviewFilter === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}>All</button>
-                    <button onClick={() => setReviewFilter('incorrect')} className={`px-4 py-2 rounded-lg font-semibold ${reviewFilter === 'incorrect' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}>Incorrect</button>
+                    <button onClick={() => handleFilterClick('all')} className={`px-4 py-2 rounded-lg font-semibold ${reviewFilter === 'all' && isReviewVisible ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}>All</button>
+                    <button onClick={() => handleFilterClick('incorrect')} className={`px-4 py-2 rounded-lg font-semibold ${reviewFilter === 'incorrect' && isReviewVisible ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}>Incorrect</button>
                 </div>
                 <div className="relative flex items-center">
                     <input 
@@ -6358,7 +6368,7 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
                 </div>
             </div>
 
-            {filteredQuestions.map((question, index) => {
+            {isReviewVisible && filteredQuestions.map((question, index) => {
                 const originalQuestionIndex = questions.findIndex(q => q.questionText === question.questionText);
                 return (
                   <div key={index} id={`review-card-${originalQuestionIndex}`} className="mb-6 p-4 border border-gray-200 rounded-lg bg-gray-50 scroll-mt-4">
@@ -6418,7 +6428,7 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
                   </div>
                 )
             })}
-             <div className="mt-8 pt-4 border-t-2 border-gray-200">
+             {isReviewVisible && <div className="mt-8 pt-4 border-t-2 border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-700 mb-3 text-center">Jump to Question</h3>
                 <div className="flex flex-wrap gap-2 justify-center">
                     {questions.map((question, index) => {
@@ -6450,7 +6460,7 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
                         );
                     })}
                 </div>
-            </div>
+            </div>}
           </div>
         </div>
     );
@@ -6591,6 +6601,7 @@ const App = () => {
     const [scoreHistory, setScoreHistory] = useState([]);
     const [isHistoryVisible, setIsHistoryVisible] = useState(false);
     const [reviewingHistoryEntry, setReviewingHistoryEntry] = useState(null);
+    const [isReviewVisible, setIsReviewVisible] = useState(false);
     
     const [questionPool, setQuestionPool] = useState(() => [...masterQuestions.keys()]);
     const [currentQuizQuestions, setCurrentQuizQuestions] = useState([]);
@@ -6853,6 +6864,8 @@ const App = () => {
                     filteredQuestions={filteredQuestions}
                     explanationVisibility={explanationVisibility}
                     toggleExplanation={toggleExplanation}
+                    isReviewVisible={isReviewVisible}
+                    setIsReviewVisible={setIsReviewVisible}
                 />
               ) : !quizStarted ? (
                 <LandingPage onStart={handleStartQuiz} onShowHistory={() => setIsHistoryVisible(true)} />
@@ -6875,6 +6888,8 @@ const App = () => {
                     explanationVisibility={explanationVisibility}
                     toggleExplanation={toggleExplanation}
                     questionPoolLength={questionPool.length}
+                    isReviewVisible={isReviewVisible}
+                    setIsReviewVisible={setIsReviewVisible}
                 />
               ) : (
                 <QuestionView 
