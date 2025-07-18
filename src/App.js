@@ -6465,8 +6465,16 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
     );
   };
 
-  const QuestionView = ({ currentQuestionData, currentQuestionIndex, totalQuestions, userAnswers, onAnswer, onFlag, onNext, onPrev, onSubmit, flaggedQuestions, timeLeft, showSubmitConfirm, setShowSubmitConfirm, setCurrentQuestion }) => (
-    <div className="relative">
+ const QuestionView = ({ currentQuestionData, currentQuestionIndex, totalQuestions, userAnswers, onAnswer, onFlag, onNext, onPrev, onSubmit, flaggedQuestions, timeLeft, showSubmitConfirm, setShowSubmitConfirm, setCurrentQuestion }) => {
+    const mainContentRef = useRef(null);
+    useEffect(() => {
+        if(mainContentRef.current) {
+            mainContentRef.current.scrollTop = 0;
+        }
+    }, [currentQuestionIndex]);
+
+    return (
+    <div className="relative" ref={mainContentRef}>
       {showSubmitConfirm && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
             <div className="bg-white p-6 md:p-8 rounded-lg shadow-2xl text-center w-11/12 max-w-sm mx-4">
@@ -6523,7 +6531,7 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
           <div className="mt-8 flex justify-between items-center">
               <button
                   onClick={onFlag}
-                  className={`font-bold py-2 px-4 md:py-3 md:px-6 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75 ${flaggedQuestions[currentQuestionIndex] ? 'bg-yellow-500 hover:bg-yellow-600 text-white focus:ring-yellow-400' : 'bg-yellow-300 hover:bg-yellow-400 text-yellow-800 focus:ring-yellow-300'}`}
+                  className={`font-bold py-3 px-5 md:py-3 md:px-6 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75 ${flaggedQuestions[currentQuestionIndex] ? 'bg-yellow-500 hover:bg-yellow-600 text-white focus:ring-yellow-400' : 'bg-yellow-300 hover:bg-yellow-400 text-yellow-800 focus:ring-yellow-300'}`}
               >
                   {flaggedQuestions[currentQuestionIndex] ? 'Unflag' : 'Flag'}
               </button>
@@ -6531,14 +6539,14 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
                   {currentQuestionIndex > 0 && (
                        <button
                           onClick={onPrev}
-                          className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 md:py-3 md:px-8 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
+                          className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-5 md:py-3 md:px-8 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
                       >
                           Back
                       </button>
                   )}
                 <button
                   onClick={onNext}
-                  className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 md:py-3 md:px-8 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75"
+                  className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-5 md:py-3 md:px-8 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75"
                 >
                   {currentQuestionIndex === totalQuestions - 1 ? 'Submit' : 'Next'}
                 </button>
@@ -6579,6 +6587,7 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
       </div>
     </div>
   );
+};
 
 // Main App component
 const App = () => {
