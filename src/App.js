@@ -6135,8 +6135,6 @@ import React, { useState, useEffect, useCallback } from 'react';
     },
   ];
 
-
-
 const QUESTIONS_PER_QUIZ = 90;
 const QUIZ_DURATION_SECONDS = 90 * 60;
 const PASSING_SCORE = 750;
@@ -6522,6 +6520,31 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
             })}
           </div>
           
+          <div className="mt-8 flex justify-between items-center">
+              <button
+                  onClick={onFlag}
+                  className={`font-bold py-2 px-4 md:py-3 md:px-6 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75 ${flaggedQuestions[currentQuestionIndex] ? 'bg-yellow-500 hover:bg-yellow-600 text-white focus:ring-yellow-400' : 'bg-yellow-300 hover:bg-yellow-400 text-yellow-800 focus:ring-yellow-300'}`}
+              >
+                  {flaggedQuestions[currentQuestionIndex] ? 'Unflag' : 'Flag'}
+              </button>
+              <div className="flex gap-2 md:gap-4">
+                  {currentQuestionIndex > 0 && (
+                       <button
+                          onClick={onPrev}
+                          className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 md:py-3 md:px-8 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
+                      >
+                          Back
+                      </button>
+                  )}
+                <button
+                  onClick={onNext}
+                  className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 md:py-3 md:px-8 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75"
+                >
+                  {currentQuestionIndex === totalQuestions - 1 ? 'Submit' : 'Next'}
+                </button>
+              </div>
+          </div>
+
           <div className="mt-8 pt-4 border-t-2 border-gray-200">
               <h3 className="text-lg font-semibold text-gray-700 mb-3 text-center">Question Navigator</h3>
               <div className="flex flex-wrap gap-2 justify-center">
@@ -6552,31 +6575,6 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
                       );
                   })}
               </div>
-          </div>
-      </div>
-
-      <div className="fixed bottom-0 left-0 right-0 p-2 bg-white/80 backdrop-blur-sm border-t-2 border-gray-100 md:static md:p-0 md:border-none md:mt-8 flex justify-between items-center">
-          <button
-              onClick={onFlag}
-              className={`font-bold py-2 px-4 md:py-3 md:px-6 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75 ${flaggedQuestions[currentQuestionIndex] ? 'bg-yellow-500 hover:bg-yellow-600 text-white focus:ring-yellow-400' : 'bg-yellow-300 hover:bg-yellow-400 text-yellow-800 focus:ring-yellow-300'}`}
-          >
-              {flaggedQuestions[currentQuestionIndex] ? 'Unflag' : 'Flag'}
-          </button>
-          <div className="flex gap-2 md:gap-4">
-              {currentQuestionIndex > 0 && (
-                   <button
-                      onClick={onPrev}
-                      className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 md:py-3 md:px-8 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
-                  >
-                      Back
-                  </button>
-              )}
-            <button
-              onClick={onNext}
-              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 md:py-3 md:px-8 text-sm md:text-base rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75"
-            >
-              {currentQuestionIndex === totalQuestions - 1 ? 'Submit' : 'Next'}
-            </button>
           </div>
       </div>
     </div>
