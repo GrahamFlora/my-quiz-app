@@ -6465,7 +6465,7 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
     );
   };
 
-  const QuestionView = ({ currentQuestionData, currentQuestionIndex, totalQuestions, userAnswers, onAnswer, onFlag, onNext, onPrev, onSubmit, flaggedQuestions, timeLeft, showSubmitConfirm, setShowSubmitConfirm, setCurrentQuestion }) => {
+  const QuestionView = ({ currentQuestionData, currentQuestionIndex, totalQuestions, userAnswers, onAnswer, onFlag, onNext, onPrev, flaggedQuestions, timeLeft, setCurrentQuestion }) => {
     const mainContentRef = useRef(null);
     useEffect(() => {
         if(mainContentRef.current) {
@@ -6918,11 +6918,13 @@ const App = () => {
         if (showFinalReviewScreen) {
             const flagged = [];
             const unanswered = [];
-            currentQuizQuestions.forEach((_, index) => {
+            currentQuizQuestions.forEach((question, index) => {
                 if (flaggedQuestions[index]) {
                     flagged.push(index);
                 }
-                if (!userAnswers[index] || userAnswers[index].length === 0) {
+                const correctAnswersCount = question.answerOptions.filter(opt => opt.isCorrect).length;
+                const userAnswersForQuestion = userAnswers[index] || [];
+                if (userAnswersForQuestion.length === 0 || (correctAnswersCount > 1 && userAnswersForQuestion.length < correctAnswersCount)) {
                     unanswered.push(index);
                 }
             });
