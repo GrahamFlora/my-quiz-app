@@ -6465,7 +6465,7 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
     );
   };
 
- const QuestionView = ({ currentQuestionData, currentQuestionIndex, totalQuestions, userAnswers, onAnswer, onFlag, onNext, onPrev, onSubmit, flaggedQuestions, timeLeft, showSubmitConfirm, setShowSubmitConfirm, setCurrentQuestion }) => {
+  const QuestionView = ({ currentQuestionData, currentQuestionIndex, totalQuestions, userAnswers, onAnswer, onFlag, onNext, onPrev, onSubmit, flaggedQuestions, timeLeft, showSubmitConfirm, setShowSubmitConfirm, setCurrentQuestion }) => {
     const mainContentRef = useRef(null);
     useEffect(() => {
         if(mainContentRef.current) {
@@ -6475,28 +6475,6 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
 
     return (
     <div className="relative" ref={mainContentRef}>
-      {showSubmitConfirm && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-2xl text-center w-11/12 max-w-sm mx-4">
-                <h2 className="text-xl md:text-2xl font-bold mb-4">Confirm Submission</h2>
-                <p className="text-base md:text-lg mb-6 text-gray-600">Are you sure you want to submit your answers?</p>
-                <div className="flex justify-center gap-4">
-                    <button 
-                        onClick={() => setShowSubmitConfirm(false)}
-                        className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-full transition-colors"
-                    >
-                        Cancel
-                    </button>
-                    <button 
-                        onClick={onSubmit}
-                        className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition-colors"
-                    >
-                        Yes, Submit
-                    </button>
-                </div>
-            </div>
-        </div>
-      )}
       <div className="pb-28 md:pb-0">
           <div className="flex justify-between items-center mb-6">
             <div className="text-xl font-semibold text-gray-600">
@@ -6589,6 +6567,48 @@ const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, 
   );
 };
 
+const FinalReviewScreen = ({ flaggedQuestions, unansweredQuestions, onGoToQuestion, onSubmitFinal }) => (
+    <div className="p-4 md:p-8">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Final Review</h2>
+        
+        <div className="mb-8">
+            <h3 className="text-xl font-semibold text-gray-700 mb-3">Flagged Questions</h3>
+            {flaggedQuestions.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                    {flaggedQuestions.map(qIndex => (
+                        <button key={`flagged-${qIndex}`} onClick={() => onGoToQuestion(qIndex)} className="h-10 w-10 flex items-center justify-center font-bold rounded-md text-white bg-yellow-500 hover:bg-yellow-600 transition-colors">
+                            {qIndex + 1}
+                        </button>
+                    ))}
+                </div>
+            ) : (
+                <p className="text-gray-500">No questions flagged for review.</p>
+            )}
+        </div>
+
+        <div className="mb-8">
+            <h3 className="text-xl font-semibold text-gray-700 mb-3">Unanswered Questions</h3>
+            {unansweredQuestions.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                    {unansweredQuestions.map(qIndex => (
+                        <button key={`unanswered-${qIndex}`} onClick={() => onGoToQuestion(qIndex)} className="h-10 w-10 flex items-center justify-center font-bold rounded-md text-white bg-gray-400 hover:bg-gray-500 transition-colors">
+                            {qIndex + 1}
+                        </button>
+                    ))}
+                </div>
+            ) : (
+                <p className="text-gray-500">All questions have been answered.</p>
+            )}
+        </div>
+
+        <div className="mt-12 text-center">
+            <button onClick={onSubmitFinal} className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75">
+                Submit Final Answers
+            </button>
+        </div>
+    </div>
+);
+
 // Main App component
 const App = () => {
     const [quizStarted, setQuizStarted] = useState(false);
@@ -6604,7 +6624,7 @@ const App = () => {
     const [filteredQuestions, setFilteredQuestions] = useState([]);
     const [isSearchVisible, setIsSearchVisible] = useState(false);
     const [reviewFilter, setReviewFilter] = useState('all');
-    const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
+    const [showFinalReviewScreen, setShowFinalReviewScreen] = useState(false);
     const [explanationVisibility, setExplanationVisibility] = useState({});
     const [scoreHistory, setScoreHistory] = useState([]);
     const [isHistoryVisible, setIsHistoryVisible] = useState(false);
@@ -6799,14 +6819,14 @@ const App = () => {
         if (nextQuestion < currentQuizQuestions.length) {
           setCurrentQuestion(nextQuestion);
         } else {
-          setShowSubmitConfirm(true);
+          setShowFinalReviewScreen(true);
         }
     };
       
     const handleSubmitQuiz = () => {
         calculateFinalScore();
         setShowScore(true);
-        setShowSubmitConfirm(false);
+        setShowFinalReviewScreen(false);
     }
       
     const handlePreviousQuestion = () => {
@@ -6850,73 +6870,93 @@ const App = () => {
         }
     }
 
+    const renderContent = () => {
+        if (reviewingHistoryEntry) {
+            return <ScoreScreen 
+                score={reviewingHistoryEntry.score}
+                rawScore={reviewingHistoryEntry.rawScore}
+                totalQuestions={reviewingHistoryEntry.totalQuestions}
+                questions={reviewingHistoryEntry.questions}
+                userAnswers={reviewingHistoryEntry.userAnswers}
+                onBackToHome={() => { setReviewingHistoryEntry(null); setIsHistoryVisible(true); }}
+                onRestartFromHistory={() => handleRestartFromHistory(reviewingHistoryEntry)}
+                reviewFilter={reviewFilter}
+                setReviewFilter={setReviewFilter}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                isSearchVisible={isSearchVisible}
+                setIsSearchVisible={setIsSearchVisible}
+                filteredQuestions={filteredQuestions}
+                explanationVisibility={explanationVisibility}
+                toggleExplanation={toggleExplanation}
+                isReviewVisible={isReviewVisible}
+                setIsReviewVisible={setIsReviewVisible}
+            />;
+        }
+        if (!quizStarted) return <LandingPage onStart={handleStartQuiz} onShowHistory={() => setIsHistoryVisible(true)} />;
+        if (showScore) return <ScoreScreen 
+            score={scaledScore}
+            rawScore={rawScore}
+            totalQuestions={currentQuizQuestions.length}
+            questions={currentQuizQuestions}
+            userAnswers={userAnswers}
+            onRestart={handleRestartQuiz}
+            onShowHistory={() => setIsHistoryVisible(true)}
+            reviewFilter={reviewFilter}
+            setReviewFilter={setReviewFilter}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            isSearchVisible={isSearchVisible}
+            setIsSearchVisible={setIsSearchVisible}
+            filteredQuestions={filteredQuestions}
+            explanationVisibility={explanationVisibility}
+            toggleExplanation={toggleExplanation}
+            questionPoolLength={questionPool.length}
+            isReviewVisible={isReviewVisible}
+            setIsReviewVisible={setIsReviewVisible}
+        />;
+        if (showFinalReviewScreen) {
+            const flagged = [];
+            const unanswered = [];
+            currentQuizQuestions.forEach((_, index) => {
+                if (flaggedQuestions[index]) {
+                    flagged.push(index);
+                }
+                if (!userAnswers[index] || userAnswers[index].length === 0) {
+                    unanswered.push(index);
+                }
+            });
+            return <FinalReviewScreen
+                flaggedQuestions={flagged}
+                unansweredQuestions={unanswered}
+                onGoToQuestion={(qIndex) => {
+                    setCurrentQuestion(qIndex);
+                    setShowFinalReviewScreen(false);
+                }}
+                onSubmitFinal={handleSubmitQuiz}
+            />;
+        }
+        return <QuestionView 
+            currentQuestionData={currentQuizQuestions[currentQuestion]}
+            currentQuestionIndex={currentQuestion}
+            totalQuestions={currentQuizQuestions.length}
+            userAnswers={userAnswers}
+            onAnswer={handleAnswerOptionClick}
+            onFlag={handleToggleFlag}
+            onNext={handleNextOrSubmit}
+            onPrev={handlePreviousQuestion}
+            onSubmit={handleSubmitQuiz}
+            flaggedQuestions={flaggedQuestions}
+            timeLeft={timeLeft}
+            setCurrentQuestion={setCurrentQuestion}
+        />;
+    }
+
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center p-0 md:p-4 font-sans">
           <div className="w-full h-full md:max-w-6xl md:h-auto bg-white md:rounded-lg shadow-2xl md:p-8 transform transition-all duration-300">
             <div className="p-4 md:p-0">
-              {reviewingHistoryEntry ? (
-                <ScoreScreen 
-                    score={reviewingHistoryEntry.score}
-                    rawScore={reviewingHistoryEntry.rawScore}
-                    totalQuestions={reviewingHistoryEntry.totalQuestions}
-                    questions={reviewingHistoryEntry.questions}
-                    userAnswers={reviewingHistoryEntry.userAnswers}
-                    onBackToHome={() => { setReviewingHistoryEntry(null); setIsHistoryVisible(true); }}
-                    onRestartFromHistory={() => handleRestartFromHistory(reviewingHistoryEntry)}
-                    reviewFilter={reviewFilter}
-                    setReviewFilter={setReviewFilter}
-                    searchTerm={searchTerm}
-                    setSearchTerm={setSearchTerm}
-                    isSearchVisible={isSearchVisible}
-                    setIsSearchVisible={setIsSearchVisible}
-                    filteredQuestions={filteredQuestions}
-                    explanationVisibility={explanationVisibility}
-                    toggleExplanation={toggleExplanation}
-                    isReviewVisible={isReviewVisible}
-                    setIsReviewVisible={setIsReviewVisible}
-                />
-              ) : !quizStarted ? (
-                <LandingPage onStart={handleStartQuiz} onShowHistory={() => setIsHistoryVisible(true)} />
-              ) : showScore ? (
-                <ScoreScreen 
-                    score={scaledScore}
-                    rawScore={rawScore}
-                    totalQuestions={currentQuizQuestions.length}
-                    questions={currentQuizQuestions}
-                    userAnswers={userAnswers}
-                    onRestart={handleRestartQuiz}
-                    onShowHistory={() => setIsHistoryVisible(true)}
-                    reviewFilter={reviewFilter}
-                    setReviewFilter={setReviewFilter}
-                    searchTerm={searchTerm}
-                    setSearchTerm={setSearchTerm}
-                    isSearchVisible={isSearchVisible}
-                    setIsSearchVisible={setIsSearchVisible}
-                    filteredQuestions={filteredQuestions}
-                    explanationVisibility={explanationVisibility}
-                    toggleExplanation={toggleExplanation}
-                    questionPoolLength={questionPool.length}
-                    isReviewVisible={isReviewVisible}
-                    setIsReviewVisible={setIsReviewVisible}
-                />
-              ) : (
-                <QuestionView 
-                    currentQuestionData={currentQuizQuestions[currentQuestion]}
-                    currentQuestionIndex={currentQuestion}
-                    totalQuestions={currentQuizQuestions.length}
-                    userAnswers={userAnswers}
-                    onAnswer={handleAnswerOptionClick}
-                    onFlag={handleToggleFlag}
-                    onNext={handleNextOrSubmit}
-                    onPrev={handlePreviousQuestion}
-                    onSubmit={handleSubmitQuiz}
-                    flaggedQuestions={flaggedQuestions}
-                    timeLeft={timeLeft}
-                    showSubmitConfirm={showSubmitConfirm}
-                    setShowSubmitConfirm={setShowSubmitConfirm}
-                    setCurrentQuestion={setCurrentQuestion}
-                />
-              )}
+              {renderContent()}
             </div>
           </div>
           {/* Score History Panel */}
