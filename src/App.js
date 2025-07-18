@@ -6136,6 +6136,7 @@ import React, { useState, useEffect, useCallback } from 'react';
   ];
 
 
+
 const QUESTIONS_PER_QUIZ = 90;
 const QUIZ_DURATION_SECONDS = 90 * 60;
 const PASSING_SCORE = 750;
@@ -6195,7 +6196,7 @@ const LandingPage = ({ onStart, onShowHistory }) => (
     </div>
 );
 
-const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, onRestart, onShowHistory, onBackToHome, onRestartFromHistory, reviewFilter, setReviewFilter, searchTerm, setSearchTerm, isSearchVisible, setIsSearchVisible, filteredQuestions, explanationVisibility, toggleExplanation, questionPoolLength, timeLeft, isReviewVisible, setIsReviewVisible }) => {
+const ScoreScreen = ({ score, rawScore, totalQuestions, questions, userAnswers, onRestart, onShowHistory, onBackToHome, onRestartFromHistory, reviewFilter, setReviewFilter, searchTerm, setSearchTerm, isSearchVisible, setIsSearchVisible, filteredQuestions, explanationVisibility, toggleExplanation, questionPoolLength, isReviewVisible, setIsReviewVisible }) => {
     const { message, color } = getScoreMessage(score);
 
     const handleFilterClick = (filter) => {
